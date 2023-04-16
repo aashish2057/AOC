@@ -1,7 +1,7 @@
 mod twenty_fifteen;
 
-use twenty_fifteen::one;
+use twenty_fifteen::{one, two::two};
 
 fn main() {
-    one::one();
+    two();
 }
