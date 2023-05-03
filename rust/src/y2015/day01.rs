@@ -1,4 +1,3 @@
-
-pub fn run() {
-    println!("hello world");
+pub fn run(input: &String) {
+    println!("{:?}", input);
 }
