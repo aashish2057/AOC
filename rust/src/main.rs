@@ -19,6 +19,7 @@ fn main() {
     match (year, day) {
         (2015, 1) => y2015::day01::run(&inputs::read(year, day)),
         (2015, 2) => y2015::day02::run(&inputs::read_lines_into_vec(year, day)),
+        (2015, 3) => y2015::day03::run(&inputs::read(year, day)),
         (_, _) => panic!("you haven't coded this one yet"),
     }
 }
