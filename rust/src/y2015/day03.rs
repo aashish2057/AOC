@@ -1,4 +1,4 @@
-// Problem - Determine how many unique houses santa has dellivered presents
+// Problem - Determine how many unique huses santa has dellivered presents
 //
 // Input - file of with 4 characters representing the directions he moves
 // in a 2d plane 
