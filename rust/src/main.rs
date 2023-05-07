@@ -5,13 +5,6 @@ mod y2015;
 extern crate fancy_regex;
 use common::inputs;
 fn main() {
-
-
-
-
-
-
-
     let argv: Vec<String> = env::args().collect();
 
     if argv.len() != 3 {
