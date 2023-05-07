@@ -7,7 +7,7 @@
 // Steps:
 // create variable to keep track of count of nice strings
 // iterate through the vec string
-// iterate through each string 
+// iterate through each string
 // check if they have atleast 3 vowels
 // check if they have one occurance of a double letter
 // check if it doesn't contain ab, cd, pq, xy
@@ -35,24 +35,27 @@ impl NiceStrings {
         let mut v_count = 0;
         for c in self.s.chars() {
             if v_count == 3 {
-                break
+                break;
             }
 
             if vowels.contains(&c) {
                 v_count += 1
             }
-
         }
         valid = v_count == 3;
-        return valid
+        return valid;
     }
 
     fn contains_naughty_substring(&self) -> bool {
         let mut valid = false;
 
-        if self.s.contains("ab") || self.s.contains("cd") || self.s.contains("pq") || self.s.contains("xy") {
+        if self.s.contains("ab")
+            || self.s.contains("cd")
+            || self.s.contains("pq")
+            || self.s.contains("xy")
+        {
             valid = true;
-        }  
+        }
         return valid;
     }
 
@@ -62,7 +65,7 @@ impl NiceStrings {
         for c in self.s.chars() {
             if c == prev {
                 valid = true;
-                break
+                break;
             }
             prev = c;
         }
@@ -74,42 +77,36 @@ impl NiceStrings {
         let rule2 = Regex::new(r"(.).\1").unwrap();
         return rule1.is_match(&self.s).unwrap() && rule2.is_match(&self.s).unwrap();
     }
-} 
-
-
-fn part1(input: &Vec<String>) -> u32 {
-
-    let mut nice_string_count = 0;
-    for st in input.iter() {
-        let nstring = NiceStrings {
-            s: st.to_string(),
-        };
-        if nstring.contains_three_vowels() && !nstring.contains_naughty_substring() && nstring.contains_duplicates() {
-            nice_string_count += 1;
-        }
-        
-    }
-    return nice_string_count; 
 }
 
-fn part2(input: &Vec<String>)  -> u32 {
+fn part1(input: &Vec<String>) -> u32 {
     let mut nice_string_count = 0;
     for st in input.iter() {
-        let nstring = NiceStrings {
-            s: st.to_string(),
-        };
+        let nstring = NiceStrings { s: st.to_string() };
+        if nstring.contains_three_vowels()
+            && !nstring.contains_naughty_substring()
+            && nstring.contains_duplicates()
+        {
+            nice_string_count += 1;
+        }
+    }
+    return nice_string_count;
+}
+
+fn part2(input: &Vec<String>) -> u32 {
+    let mut nice_string_count = 0;
+    for st in input.iter() {
+        let nstring = NiceStrings { s: st.to_string() };
         if nstring.contains_two_pairs() {
             nice_string_count += 1;
         }
     }
-    return nice_string_count; 
+    return nice_string_count;
 }
-
 
 #[cfg(test)]
 mod test {
     use super::*;
-
 
     #[test]
     fn test_part1() {
@@ -118,7 +115,6 @@ mod test {
         let s3 = vec![String::from("jchzalrnumimnmhp")];
         let s4 = vec![String::from("haegwjzuvuyypxyu")];
         let s5 = vec![String::from("dvszwmarrgswjxmb")];
-        
 
         assert_eq!(part1(&s1), 1);
         assert_eq!(part1(&s2), 1);
@@ -133,7 +129,6 @@ mod test {
         let s2 = vec![String::from("xxyxx")];
         let s3 = vec![String::from("uurcxstgmygtbstg")];
         let s4 = vec![String::from("ieodomkazucvgmuy")];
-        
 
         assert_eq!(part2(&s1), 1);
         assert_eq!(part2(&s2), 1);

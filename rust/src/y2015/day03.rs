@@ -1,7 +1,7 @@
 // Problem - Determine how many unique huses santa has dellivered presents
 //
 // Input - file of with 4 characters representing the directions he moves
-// in a 2d plane 
+// in a 2d plane
 //
 // How to solve
 //
@@ -14,7 +14,7 @@
 // if false mark the position true and increment one to unique houses
 // return unique houses
 //
-// part 2 same as before there are just 2 santas, use mod to select between which one 
+// part 2 same as before there are just 2 santas, use mod to select between which one
 // from a list of tuples
 
 use std::collections::HashMap;
@@ -26,18 +26,18 @@ pub fn run(input: &String) {
 }
 
 fn part1(input: &String) -> i32 {
-    let mut santa = (0,0);
+    let mut santa = (0, 0);
     let mut unique_houses = 0;
     let mut grid: HashMap<(i32, i32), bool> = HashMap::new();
 
     grid.insert(santa, true);
-    unique_houses += 1; 
+    unique_houses += 1;
     for c in input.chars() {
         match c {
-            '<' => santa = (santa.0-1, santa.1),
-            '>' => santa = (santa.0+1, santa.1),
-            '^' => santa = (santa.0, santa.1+1),
-            'v' => santa = (santa.0, santa.1-1),
+            '<' => santa = (santa.0 - 1, santa.1),
+            '>' => santa = (santa.0 + 1, santa.1),
+            '^' => santa = (santa.0, santa.1 + 1),
+            'v' => santa = (santa.0, santa.1 - 1),
             _ => panic!("File has invalid character"),
         }
 
@@ -45,24 +45,24 @@ fn part1(input: &String) -> i32 {
             unique_houses += 1;
             return true;
         });
-    };
+    }
 
     return unique_houses;
 }
 
 fn part2(input: &String) -> i32 {
-    let mut santa = [(0,0), (0,0)];
+    let mut santa = [(0, 0), (0, 0)];
     let mut unique_houses = 0;
     let mut grid: HashMap<(i32, i32), bool> = HashMap::new();
 
     grid.insert(santa[0], true);
-    unique_houses += 1; 
+    unique_houses += 1;
     for (i, c) in input.chars().enumerate() {
         match c {
-            '<' => santa[i % 2] = (santa[i % 2].0-1, santa[i % 2].1),
-            '>' => santa[i % 2] = (santa[i % 2].0+1, santa[i % 2].1),
-            '^' => santa[i % 2] = (santa[i % 2].0, santa[i % 2].1+1),
-            'v' => santa[i % 2] = (santa[i % 2].0, santa[i % 2].1-1),
+            '<' => santa[i % 2] = (santa[i % 2].0 - 1, santa[i % 2].1),
+            '>' => santa[i % 2] = (santa[i % 2].0 + 1, santa[i % 2].1),
+            '^' => santa[i % 2] = (santa[i % 2].0, santa[i % 2].1 + 1),
+            'v' => santa[i % 2] = (santa[i % 2].0, santa[i % 2].1 - 1),
             _ => panic!("File has invalid character"),
         }
 
@@ -74,7 +74,7 @@ fn part2(input: &String) -> i32 {
             unique_houses += 1;
             return true;
         });
-    };
+    }
 
     return unique_houses;
 }
