@@ -15,8 +15,8 @@
 //
 // at the end loop through the 2d matrix and count the number of ones return that
 pub fn run(input: &Vec<String>) {
-    let p1 = part1(&input);
-    let p2 = part2(&input);
+    let p1 = part1(input);
+    let p2 = part2(input);
     println!("Part 1: {}, Part2: {}", p1, p2);
 }
 
@@ -34,11 +34,11 @@ impl Instruction {
             }
         }
 
-        return answer;
+        answer
     }
 
     fn get_grid_points(&self) -> Vec<usize> {
-        let x = self.ins.replace(",", " ");
+        let x = self.ins.replace(',', " ");
         let y: Vec<&str> = x.split_whitespace().collect();
         let mut points: Vec<usize> = vec![];
         for s in y {
@@ -47,7 +47,7 @@ impl Instruction {
             }
         }
 
-        return points;
+        points
     }
 }
 
@@ -96,7 +96,7 @@ fn part1(input: &Vec<String>) -> i32 {
             }
         }
     }
-    return count;
+    count
 }
 
 fn part2(input: &Vec<String>) -> i32 {
@@ -136,7 +136,7 @@ fn part2(input: &Vec<String>) -> i32 {
             count += y;
         }
     }
-    return count;
+    count
 }
 
 #[cfg(test)]

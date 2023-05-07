@@ -8,7 +8,7 @@ pub fn read(year: u32, day: u8) -> String {
         .expect("File doesn't exist")
         .trim()
         .to_string();
-    return s;
+    s
 }
 
 pub fn read_lines_into_vec(year: u32, day: u8) -> Vec<String> {
@@ -16,10 +16,10 @@ pub fn read_lines_into_vec(year: u32, day: u8) -> Vec<String> {
     let file = File::open(path).expect("File not found");
     let buf = BufReader::new(file);
 
-    let v = buf
+    
+
+    buf
         .lines()
         .map(|l| l.expect("could not parse line"))
-        .collect();
-
-    return v;
+        .collect()
 }

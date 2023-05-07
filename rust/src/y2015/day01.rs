@@ -15,8 +15,8 @@
 // Do same thing as above just break when floor is -1 and return the index
 
 pub fn run(input: &String) {
-    let p1 = part1(&input);
-    let p2 = part2(&input);
+    let p1 = part1(input);
+    let p2 = part2(input);
     println!("Part 1: {}, Part 2: {}", p1, p2);
 }
 
@@ -29,7 +29,7 @@ fn part1(input: &String) -> i32 {
             _ => panic!("File contains invalid character"),
         }
     }
-    return floor;
+    floor
 }
 
 fn part2(input: &String) -> usize {
@@ -46,7 +46,7 @@ fn part2(input: &String) -> usize {
             break;
         }
     }
-    return floor_num + 1;
+    floor_num + 1
 }
 
 #[cfg(test)]

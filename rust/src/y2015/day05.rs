@@ -19,8 +19,8 @@ use std::collections::HashSet;
 use fancy_regex::Regex;
 
 pub fn run(input: &Vec<String>) {
-    let p1 = part1(&input);
-    let p2 = part2(&input);
+    let p1 = part1(input);
+    let p2 = part2(input);
     println!("Part1: {}, Part2: {}", p1, p2);
 }
 
@@ -31,7 +31,7 @@ struct NiceStrings {
 impl NiceStrings {
     fn contains_three_vowels(&self) -> bool {
         let vowels = HashSet::from(['a', 'e', 'i', 'o', 'u']);
-        let valid: bool;
+        
         let mut v_count = 0;
         for c in self.s.chars() {
             if v_count == 3 {
@@ -42,8 +42,8 @@ impl NiceStrings {
                 v_count += 1
             }
         }
-        valid = v_count == 3;
-        return valid;
+        let valid: bool = v_count == 3;
+        valid
     }
 
     fn contains_naughty_substring(&self) -> bool {
@@ -56,7 +56,7 @@ impl NiceStrings {
         {
             valid = true;
         }
-        return valid;
+        valid
     }
 
     fn contains_duplicates(&self) -> bool {
@@ -69,13 +69,13 @@ impl NiceStrings {
             }
             prev = c;
         }
-        return valid;
+        valid
     }
 
     fn contains_two_pairs(&self) -> bool {
         let rule1 = Regex::new(r"(..).*\1").unwrap();
         let rule2 = Regex::new(r"(.).\1").unwrap();
-        return rule1.is_match(&self.s).unwrap() && rule2.is_match(&self.s).unwrap();
+        rule1.is_match(&self.s).unwrap() && rule2.is_match(&self.s).unwrap()
     }
 }
 
@@ -90,7 +90,7 @@ fn part1(input: &Vec<String>) -> u32 {
             nice_string_count += 1;
         }
     }
-    return nice_string_count;
+    nice_string_count
 }
 
 fn part2(input: &Vec<String>) -> u32 {
@@ -101,7 +101,7 @@ fn part2(input: &Vec<String>) -> u32 {
             nice_string_count += 1;
         }
     }
-    return nice_string_count;
+    nice_string_count
 }
 
 #[cfg(test)]

@@ -20,8 +20,8 @@
 use std::collections::HashMap;
 
 pub fn run(input: &String) {
-    let p1 = part1(&input);
-    let p2 = part2(&input);
+    let p1 = part1(input);
+    let p2 = part2(input);
     println!("Part1: {}, Part2: {}", p1, p2);
 }
 
@@ -43,11 +43,11 @@ fn part1(input: &String) -> i32 {
 
         grid.entry(santa).or_insert_with(|| {
             unique_houses += 1;
-            return true;
+            true
         });
     }
 
-    return unique_houses;
+    unique_houses
 }
 
 fn part2(input: &String) -> i32 {
@@ -68,15 +68,15 @@ fn part2(input: &String) -> i32 {
 
         grid.entry(santa[0]).or_insert_with(|| {
             unique_houses += 1;
-            return true;
+            true
         });
         grid.entry(santa[1]).or_insert_with(|| {
             unique_houses += 1;
-            return true;
+            true
         });
     }
 
-    return unique_houses;
+    unique_houses
 }
 
 #[cfg(test)]

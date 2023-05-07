@@ -5,8 +5,8 @@
 //
 //
 pub fn run(input: &Vec<String>) {
-    let p1 = part1(&input);
-    let p2 = part2(&input);
+    let p1 = part1(input);
+    let p2 = part2(input);
     println!("Part1: {}, Part2: {}", p1, p2);
 }
 
@@ -18,41 +18,41 @@ struct Presents {
 
 impl Presents {
     fn side1(&self) -> u32 {
-        return self.length * self.width;
+        self.length * self.width
     }
     fn side2(&self) -> u32 {
-        return self.width * self.height;
+        self.width * self.height
     }
     fn side3(&self) -> u32 {
-        return self.length * self.height;
+        self.length * self.height
     }
 
     fn surface_area(&self) -> u32 {
-        return 2 * (self.side1() + self.side2() + self.side3());
+        2 * (self.side1() + self.side2() + self.side3())
     }
 
     fn min_side(&self) -> u32 {
-        return self.side1().min(self.side2()).min(self.side3());
+        self.side1().min(self.side2()).min(self.side3())
     }
 
     fn area(&self) -> u32 {
-        return self.length * self.width * self.height;
+        self.length * self.width * self.height
     }
 
     fn perimeter1(&self) -> u32 {
-        return self.length + self.width;
+        self.length + self.width
     }
 
     fn perimeter2(&self) -> u32 {
-        return self.width + self.height;
+        self.width + self.height
     }
     fn perimeter3(&self) -> u32 {
-        return self.length + self.height;
+        self.length + self.height
     }
     fn shortest_perimeter(&self) -> u32 {
-        return (2 * self.perimeter1())
+        (2 * self.perimeter1())
             .min(2 * self.perimeter2())
-            .min(2 * self.perimeter3());
+            .min(2 * self.perimeter3())
     }
 }
 
@@ -62,8 +62,7 @@ fn part1(input: &Vec<String>) -> u32 {
         let vals: Vec<&str> = s.split('x').collect();
 
         let _p = Presents {
-            length: vals
-                .get(0)
+            length: vals.first()
                 .expect("Missing number")
                 .parse::<u32>()
                 .expect("Not valid number"),
@@ -81,7 +80,7 @@ fn part1(input: &Vec<String>) -> u32 {
 
         wrapping_paper += _p.surface_area() + _p.min_side();
     }
-    return wrapping_paper;
+    wrapping_paper
 }
 
 fn part2(input: &Vec<String>) -> u32 {
@@ -90,8 +89,7 @@ fn part2(input: &Vec<String>) -> u32 {
         let vals: Vec<&str> = s.split('x').collect();
 
         let _p = Presents {
-            length: vals
-                .get(0)
+            length: vals.first()
                 .expect("Missing number")
                 .parse::<u32>()
                 .expect("Not valid number"),
@@ -108,7 +106,7 @@ fn part2(input: &Vec<String>) -> u32 {
         };
         bow += _p.area() + _p.shortest_perimeter();
     }
-    return bow;
+    bow
 }
 
 #[cfg(test)]
